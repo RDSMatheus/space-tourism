@@ -30,6 +30,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 150px;
+      .text{
+        opacity: 0;
+        transform: translateX(150px);
+        transition: .6s;
+      }
       ul{
         display: flex;
         gap: 20px;
@@ -75,20 +80,26 @@
         color: $color-3;
         text-transform: uppercase;
         margin-bottom: 15px;
+       
       }
       img{
         margin-left: 63px;
+        opacity: 0;
+        transform: translateX(-150px);
+        transition: .6s;
       }
       p{
         @include font-2(18);
         color: $color-2;
         max-width: 45ch;
         margin-bottom: 100px;
+       
       }
       .info{
         display: grid;
         grid-template-columns: 1fr 1fr;
         position: relative;
+       
         &::before{
           content: '';
           position: absolute;

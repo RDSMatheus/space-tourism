@@ -3,10 +3,20 @@ import { Link } from 'react-router-dom';
 import './Home.scss';
 
 const Home = () => {
+  const text = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    setTimeout(() => {
+      if (text.current) {
+        text.current.style.opacity = '1';
+        text.current.style.transform = 'translateX(0)';
+      }
+    }, 500);
+  }, []);
+
   return (
     <section className="home">
       <div className="container">
-        <div>
+        <div ref={text} className="text">
           <h2>SO, YOU WANT TO TRAVEL TO</h2>
           <h1>Space</h1>
           <p>
@@ -16,7 +26,7 @@ const Home = () => {
             world experience!
           </p>
         </div>
-        <div className='explore'>
+        <div className="explore">
           <Link to="/destination">Explore</Link>
         </div>
       </div>

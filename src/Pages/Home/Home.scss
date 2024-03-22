@@ -35,6 +35,11 @@
       color: $color-3;
       max-width: 45ch;
     }
+    .text{
+      opacity: 0;
+      transition: .6s;
+      transform: translateX(-300px);
+    }
     .explore{
       display: grid;
       place-items: center;
