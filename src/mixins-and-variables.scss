@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Bellefair&display=swap');
+
+$color-1: #0B0D17;
+$color-2: #D0D6F9;
+$color-3: #FFFFFF;
+
+@function rem($px, $context: 16){
+  @return calc($px/$context)+rem;
+}
+
+@function lineHeigth($size){
+  @if $size <= 24{
+    @return 1.4;
+  } @else{
+    @return 1.2;
+  }
+}
+
+@mixin font-1($size){
+  font-size: rem($size);
+  line-height: lineHeigth($size);
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+@mixin font-2($size){
+  font-size: rem($size);
+  line-height: lineHeigth($size);
+  font-family: "Barlow", sans-serif;
+}
+
+@mixin font-3($size){
+  font-size: rem($size);
+  line-height: lineHeigth($size);
+  font-family: "Bellefair", serif;
+}
+
+$l-device: 1200px;
+$m-device: 760px;
+$s-device: 480px;
+
+@mixin device($size){
+  @if $size == l {
+    @media screen and (min-width: $l-device){
+      @content;
+    }
+  } @else if $size == m {
+    @media screen and (min-width: $m-device) and (max-width: $l-device){
+      @content;
+    } 
+  } @else if $size == s {
+    @media screen and (max-width: $m-device){
+      @content;
+    }
+  }
+}
+
+@mixin container{
+  max-width: $l-device;
+  margin: 0 auto;
+  @include device(m){
+    max-width: $m-device;
+  }
+  @include device(s){
+    max-width: $s-device;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.container{
+  @include container
+}
+
+@mixin btn{
+    position: relative;
+    gap: 10px;
+    z-index: 1;
+    color: $color-3;
+    padding: .5rem 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    @include font-1(16);
+    letter-spacing: 2.7px;
+    text-transform: uppercase;
+    border: none;
+    width: max-content;
+    background: none;
+    cursor: pointer;
+    &::after{
+      content: '';
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 2px;
+      grid-column: 1/-1;
+      transition: .3s;
+      bottom: -20px;
+    }
+    &:hover::after{
+      width: 80%;
+      background-color: rgba($color: $color-3, $alpha: .5);
+    }
+  }
+
+
+.btn.active{
+  &::after{
+    width: 100%;
+    background-color: $color-3;
+  }
+}

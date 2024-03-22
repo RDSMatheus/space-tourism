@@ -1,0 +1,17 @@
+@import 'mixins-and-variables';
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body{
+  overflow: hidden;
+  background-color: $color-1;
+}
+
+a{
+  text-decoration: none;
+}
