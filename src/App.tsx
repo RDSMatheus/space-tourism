@@ -5,6 +5,7 @@ import Header from './Header/Header';
 import Home from './Pages/Home/Home';
 import Destination from './Pages/Destination/Destination';
 import { ContextProvider } from './GlobalContext';
+import Crew from './Pages/Crew/Crew';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/destination" element={<Destination />} />
+          <Route path="/crew" element={<Crew />} />
         </Routes>
       </BrowserRouter>
     </ContextProvider>

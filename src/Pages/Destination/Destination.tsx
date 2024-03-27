@@ -12,7 +12,6 @@ const Destination = () => {
       if (containerDivRef.current) {
         containerDivRef.current.style.opacity = '1';
         containerDivRef.current.style.transform = 'translateX(0)';
-     
       }
     }, 100);
   }, [active]);
